@@ -1,6 +1,7 @@
 # Scout Autonomous — 実環境における時空間ナビゲーション
 
-> 動的環境 (歩行者) を含む屋内での自律走行を、4輪台車 + 3D LiDAR でゼロから組み上げ、シミュレーションから実機展開までを通して実証した研究プロジェクトの **成果まとめ** リポジトリです。
+> 動的環境 (歩行者) に対応する時空間ナビゲーションを、4輪台車 + 3D LiDAR でゼロから組み上げた研究プロジェクトの **成果まとめ** リポジトリです。
+> 時空間アルゴリズムは **シミュレーション (Gazebo Harmonic) で歩行者回避動作を検証**、実機では **SLAM スタックの構築と静的環境での自律走行を実証** まで到達しています。動的環境での実機検証は今後の課題です。
 >
 > 本リポジトリにはソースコードは含まれていません。**設計判断・検証・結果** を中心に構成しています。
 
@@ -8,7 +9,7 @@
 
 ## English Summary (90 seconds)
 
-I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a Hesai QT128 3D LiDAR. The system performs LiDAR-only SLAM (KISS-ICP), spatio-temporal path planning that treats pedestrians as **future** obstacles in `(x, y, t)`, and onboard pedestrian detection / tracking / trajectory prediction. The contribution of this work is not the individual algorithms — it is the systems-level work of taking a stack that worked in Gazebo and making it work in the real world: diagnosing a wheel-odometry calibration bias, dropping wheel input from the EKF after data-driven analysis, fixing self-point contamination of the LiDAR (the robot detected itself as an obstacle), and stabilizing the planner under intermittent localisation. The result is a robot that drives autonomously around moving pedestrians at ~0.5 m/s indoors.
+I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a Hesai QT128 3D LiDAR. The system performs LiDAR-only SLAM (KISS-ICP), spatio-temporal path planning that treats pedestrians as **future** obstacles in `(x, y, t)`, and onboard pedestrian detection / tracking / trajectory prediction. The contribution of this work is not the individual algorithms — it is the systems-level work of taking a stack that worked in Gazebo and making it work in the real world: diagnosing a wheel-odometry calibration bias, dropping wheel input from the EKF after data-driven analysis, fixing self-point contamination of the LiDAR (the robot detected itself as an obstacle), and stabilizing the planner under intermittent localisation. The spatio-temporal pedestrian-avoidance behavior was verified in Gazebo simulation; on the real robot, SLAM and waypoint-following in a static environment are working, while validating dynamic-pedestrian avoidance on hardware is ongoing work.
 
 ---
 
@@ -21,7 +22,8 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | **経路計画** | 時空間プランナ STP4 — `(x, y, t)` 3D 探索で「待機 vs 迂回」を自動選択 |
 | **歩行者検出** | DBSCAN → 32次元特徴量 → ONNX (Random Forest) → ByteTrack 追跡 → ONNX 軌道予測 |
 | **計算** | GPU 不要・CPU のみ・全パイプライン 5Hz でリアルタイム |
-| **実証** | 屋内・動的歩行者環境での自律走行成功 |
+| **実証範囲** | Sim: 動的歩行者環境での回避動作 / 実機: SLAM + 静的環境での自律走行 |
+| **今後の課題** | 実機での歩行者環境検証、屋外運用、GNSS/IMU 統合 |
 
 ---
 
@@ -29,11 +31,11 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 
 <!-- TODO: GIF を assets/videos/ に配置したらここに埋め込み -->
 
-| シーン | 内容 |
-|--------|------|
-| ![自律走行 GIF プレースホルダ](assets/videos/_PLACEHOLDER_autonomous_drive.gif) | 屋内自律走行 (実機) |
-| ![歩行者回避 GIF プレースホルダ](assets/videos/_PLACEHOLDER_pedestrian_avoidance.gif) | 歩行者を「未来の障害物」として扱う待機戦略 |
-| ![Sim 比較 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_vs_real.gif) | Gazebo シミュレーション ↔ 実機 |
+| シーン | 内容 | 環境 |
+|--------|------|------|
+| ![実機自律走行 GIF プレースホルダ](assets/videos/_PLACEHOLDER_autonomous_drive.gif) | 屋内自律走行 (静的障害物) | 実機 |
+| ![Sim 歩行者回避 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_pedestrian_avoidance.gif) | 歩行者を「未来の障害物」として扱う待機戦略 | Gazebo |
+| ![Sim 比較 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_world.gif) | Gazebo Harmonic 上の検証 world | Gazebo |
 
 > GIF 差し替え手順は [assets/videos/README.md](assets/videos/README.md) を参照。
 

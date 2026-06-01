@@ -7,12 +7,12 @@
 各 GIF は README.md と docs/06_results.md から参照されています。
 ファイル名は **そのまま** で配置すれば自動でリンクが繋がります。
 
-| ファイル名 | 内容 | 推奨長さ |
-|-----------|------|---------|
-| `_PLACEHOLDER_autonomous_drive.gif` | 屋内自律走行 (静的障害物のみ) | 10-15 秒 |
-| `_PLACEHOLDER_pedestrian_avoidance.gif` | 歩行者を待機して回避 | 10-20 秒 |
-| `_PLACEHOLDER_pedestrian_detour.gif` | 歩行者を迂回 | 10-20 秒 |
-| `_PLACEHOLDER_sim_vs_real.gif` | Gazebo と実機の並列比較 | 15-20 秒 |
+| ファイル名 | 内容 | 環境 | 推奨長さ |
+|-----------|------|------|---------|
+| `_PLACEHOLDER_autonomous_drive.gif` | 屋内自律走行 (静的障害物) | 実機 | 10-15 秒 |
+| `_PLACEHOLDER_sim_pedestrian_avoidance.gif` | 歩行者を待機して回避 | Gazebo | 10-20 秒 |
+| `_PLACEHOLDER_sim_pedestrian_detour.gif` | 歩行者を迂回 | Gazebo | 10-20 秒 |
+| `_PLACEHOLDER_sim_world.gif` | Gazebo 検証 world | Gazebo | 15-20 秒 |
 
 → 用意ができたら `_PLACEHOLDER_` プレフィックスを **削除** してファイル名を上書き保存してください。
 （README/docs 内のリンクも `_PLACEHOLDER_` を外したものに合わせて更新が必要)
