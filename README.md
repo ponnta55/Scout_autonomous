@@ -34,7 +34,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | シーン | 内容 | 環境 |
 |--------|------|------|
 | ![実機自律走行 GIF プレースホルダ](assets/videos/_PLACEHOLDER_autonomous_drive.gif) | 屋内自律走行 (静的障害物) | 実機 |
-| ![Sim 歩行者回避 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_pedestrian_avoidance.gif) | 歩行者を「未来の障害物」として扱う待機戦略 | Gazebo |
+| ![Sim 歩行者回避 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_pedestrian_avoidance.gif) | 歩行者を「未来の障害物」として扱う待機戦略 | C++ |
 | ![Sim 比較 GIF プレースホルダ](assets/videos/_PLACEHOLDER_sim_world.gif) | Gazebo Harmonic 上の検証 world | Gazebo |
 
 > GIF 差し替え手順は [assets/videos/README.md](assets/videos/README.md) を参照。
