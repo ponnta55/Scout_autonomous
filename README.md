@@ -85,5 +85,4 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 ---
 
 ## License
-
-このリポジトリの **文章と図表** は CC BY 4.0 で公開しています。ソースコードは公開していません。
+All Rights Reserved. 本リポジトリは未発表研究を含むため、無断複製・転載・再配布を禁止します。
