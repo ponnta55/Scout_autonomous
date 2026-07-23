@@ -1,6 +1,6 @@
 # 07. Sim → Real で学んだこと
 
-[← 06. 評価・結果](06_results.md) | [目次に戻る →](../README.md)
+[← 06. 評価・結果](06_results.md) | [次: 08. Jetson 実機移行 →](08_jetson.md)
 
 ---
 
@@ -272,4 +272,4 @@ NetworkManager が DHCP で上書きしてしまう。
 
 ---
 
-[← 06. 評価・結果](06_results.md) | [目次に戻る →](../README.md)
+[← 06. 評価・結果](06_results.md) | [次: 08. Jetson 実機移行 →](08_jetson.md)

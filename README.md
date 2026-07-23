@@ -43,7 +43,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 
 ## ドキュメント目次
 
-7 章構成。**興味のある章から読めます**が、まず [01_overview](docs/01_overview.md) を読むと全体像が掴めます。
+8 章構成。**興味のある章から読めます**が、まず [01_overview](docs/01_overview.md) を読むと全体像が掴めます。
 
 | # | 章 | 内容 |
 |---|----|------|
@@ -54,6 +54,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | 05 | [歩行者検出・追跡・予測](docs/05_pedestrian.md) | LiDAR → 検出 → 追跡 → 軌道予測パイプライン |
 | 06 | [評価・結果](docs/06_results.md) | SLAM 精度、計画タイミング、実環境走行の結果 |
 | 07 | [Sim → Real で学んだこと](docs/07_lessons.md) | 自己点群問題、wheel 校正バイアス、その他のハマりどころ |
+| 08 | [Jetson 実機移行と並列高速化](docs/08_jetson.md) | 開発PC→Jetson 移行、クロスマシン互換基盤、検出前段 3 倍高速化 |
 
 ---
 
@@ -81,6 +82,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | 3 | **時空間プランナ (STP4)** | 静的 2D 計画では待機戦略が表現できない | [04_planning](docs/04_planning.md) |
 | 4 | **3D ボックス自己フィルタ** | sim では発覚しなかった「ロボット自身を障害物と誤認」を解決 | [07_lessons](docs/07_lessons.md) |
 | 5 | **TF 全フレーム base_link 統一** | LiDAR フレームでの推定値を base_link に正しく投影、SLAM と planner の座標系を一致 | [02_system](docs/02_system.md) |
+| 6 | **出力ビット一致を保つ決定的並列化** | 高速化 (Jetson 3.0x) しても回帰テストで等価性を証明できる形に制約 | [08_jetson](docs/08_jetson.md) |
 
 ---
 
