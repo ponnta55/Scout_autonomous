@@ -15,6 +15,7 @@ SLAM 評価グラフを `slam_*.png` として配置しています。
 | `slam_repeatability_xy.png` | KISS-ICP の 3 ラン繰り返し XY 軌跡 | docs/06_results.md |
 | `slam_three_sources_yaw.png` | wheel / KISS / EKF の 3 ソース比較 yaw | docs/03_slam.md, docs/06_results.md |
 | `slam_three_sources_xy.png` | wheel / KISS / EKF の 3 ソース比較 XY | docs/03_slam.md, docs/06_results.md |
+| `glim_map_20260915.png` | GLIM 実機地図 (手押し 184 s / 33.8 m) | docs/10_glim_localization.md |
 
 ## 推奨追加
 

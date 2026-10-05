@@ -1,6 +1,6 @@
 # 08. Jetson 実機移行と並列高速化
 
-[← 07. 学んだこと](07_lessons.md) | [目次に戻る →](../README.md)
+[← 07. 学んだこと](07_lessons.md) | [目次に戻る →](../README.md) | [次: 09. DNN 検出 →](09_dnn_detection.md)
 
 ---
 
@@ -139,4 +139,4 @@ OpenMP による並列化と、直列でも効くアルゴリズム改善を併�
 
 ---
 
-[← 07. 学んだこと](07_lessons.md) | [目次に戻る →](../README.md)
+[← 07. 学んだこと](07_lessons.md) | [目次に戻る →](../README.md) | [次: 09. DNN 検出 →](09_dnn_detection.md)
