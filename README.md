@@ -19,7 +19,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 |------|------|
 | **プラットフォーム** | AgileX SCOUT MINI (4輪 skid-steer) + Hesai QT128 (128ch 3D LiDAR) |
 | **SLAM** | GLIM (3D LiDAR-IMU, GPU) + 自作の事前地図ローカライゼーション / 従来構成 KISS-ICP + EKF も切替で温存 |
-| **経路計画** | 時空間プランナ STP4 — `(x, y, t)` 3D 探索で「待機 vs 迂回」を自動選択 |
+| **経路計画** | 時空間プランナ STP4 — `(x, y, t)` 探索で「待機 vs 迂回」を自動選択 / 後継の時空間 Hybrid A* — `(x, y, θ, t)` で旋回・加減速の時間も数える (切替式, 2026-10) |
 | **歩行者検出** | CenterPoint (GPU DNN, 既定) / Classical (DBSCAN → 特徴量 → RF) を切替 → ByteTrack 追跡 → ONNX 軌道予測 |
 | **検出精度** | 人手 GT 389 人で CenterPoint **F1 0.941** (Classical 0.456) |
 | **計算** | Jetson AGX Orin。Classical は CPU のみで動作、CenterPoint は GPU で検出〜予測 約 65 ms |
@@ -44,7 +44,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 
 ## ドキュメント目次
 
-11 章構成。**興味のある章から読めます**が、まず [01_overview](docs/01_overview.md) を読むと全体像が掴めます。
+12 章構成。**興味のある章から読めます**が、まず [01_overview](docs/01_overview.md) を読むと全体像が掴めます。
 
 | # | 章 | 内容 |
 |---|----|------|
@@ -59,6 +59,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | 09 | [DNN 検出器の導入と定量評価](docs/09_dnn_detection.md) | CenterPoint 導入、人手 GT による比較で評価が逆転、誤検出の正体は追跡 |
 | 10 | [IMU・GLIM・ローカライゼーション](docs/10_glim_localization.md) | IMU 統合、GLIM 実機稼働、DDS フレーム落ちの真因、事前地図ローカライゼーション |
 | 11 | [実機自律走行の運用化](docs/11_field_navigation.md) | 走行管理・障害物余白・ポーズポイント、歩行者予測の単位バグ修正 |
+| 12 | [時空間 Hybrid A*](docs/12_st_hybrid_astar.md) | 向きと時間を同時に扱う局所プランナ。待機を出発遅延で表し 42 ms 以下、STP4 との比較動画 |
 
 ---
 
@@ -92,6 +93,7 @@ I built an autonomous navigation stack on an AgileX SCOUT MINI equipped with a H
 | 7 | **既定の検出器を CenterPoint に** | 人手 GT で F1 0.941 vs 0.456。目視評価の結論を撤回 | [09_dnn_detection](docs/09_dnn_detection.md) |
 | 8 | **SLAM を GLIM へ、IMU はヨー角速度のみ融合** | 加速度の融合は静止時に位置が流れた。地図座標を固定するためローカライゼーションを自作 | [10_glim_localization](docs/10_glim_localization.md) |
 | 9 | **点群の DDS 配送設定を全ノードに適用** | 2.8 MB の点群が共有メモリに入らずフレーム落ち (39% → 100%) | [10_glim_localization](docs/10_glim_localization.md) |
+| 10 | **待機を「出発の遅延」で表す時空間 Hybrid A*** | 待機ノードは状態爆発 (200 ms 超)。SIPP 型の支配と出発遅延で 42 ms 以下に。加速して抜ける動きは入れない | [12_st_hybrid_astar](docs/12_st_hybrid_astar.md) |
 
 ---
 

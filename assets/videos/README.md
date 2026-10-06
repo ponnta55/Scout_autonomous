@@ -58,3 +58,10 @@ cp output.gif /path/to/Scout_autonomous/assets/videos/autonomous_drive.gif
 | `rviz_planned_path.png` | 計画経路 (緑線) |
 | `gazebo_world.png` | Gazebo の検証用 world |
 | `robot_photo.jpg` | 実機写真 |
+
+## 時空間 Hybrid A* (docs/12_st_hybrid_astar.md, 2026-10-06)
+
+| ファイル | 内容 |
+|---|---|
+| `st_hybrid_goal_side.gif` / `st_hybrid_box.gif` / `st_hybrid_cross.gif` / `st_hybrid_corridor_group.gif` | 合成シナリオ。左 STP4+現行追従、右 時空間 Hybrid A* |
+| `stp4_real_ped_crossing.gif` / `st_hybrid_real_ped_crossing.gif` | 実機の記録データ (横断シーン) でのオフライン走行 |
